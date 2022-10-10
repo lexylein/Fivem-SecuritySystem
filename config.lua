@@ -124,6 +124,7 @@ Config.NoClipTriggerCount = 3
 Config.KickForKeys = false
 
 Config.BlacklistedModels = {
+    "scarab",
     "rhino",
     "jet",
     "stt_prop_stunt_track_uturn",
