@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'Noro_Lex'
 description 'made by Noro_Lex'
-version '1.1'
+version '1.0'
 
 shared_script 'config.lua'
 
