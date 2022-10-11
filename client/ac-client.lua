@@ -211,7 +211,7 @@ if Config.Components.AntiCheat then
 end
 if Config.Components.AntiNoclip then
     Citizen.CreateThread(function()
-        Citizen.Wait(10000)
+        Citizen.Wait(Config.NoClipDelay)
         while true do
             Citizen.Wait(0)
             local ped = PlayerPedId()
@@ -219,7 +219,7 @@ if Config.Components.AntiNoclip then
             local still = IsPedStill(ped)
             local vel = GetEntitySpeed(ped)
             local ped = PlayerPedId()
-            Wait(3000)
+            Wait(1000)
 
             local newx,newy,newz = table.unpack(GetEntityCoords(ped,true))
             local newPed = PlayerPedId()

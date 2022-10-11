@@ -119,12 +119,13 @@ Config.BanComponents = {
 
 Config.WhitelistPedModels = {'S_M_M_TRUCKER_01', 'MP_M_WAREMECH_01'}
 
+Config.NoClipDelay = 3000 --in ms
 Config.NoClipTriggerCount = 3
 
 Config.KickForKeys = false
 
 Config.BlacklistedModels = {
-    "scarab",
+    "scarab",f
     "rhino",
     "jet",
     "stt_prop_stunt_track_uturn",
