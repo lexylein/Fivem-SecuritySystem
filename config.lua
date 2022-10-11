@@ -103,7 +103,7 @@ Config.Components = {
     AntiRemoveOtherPlayersWeapons = true, -- Stops players removing other players weapons. 
     AntiCancelAnimations = true, -- Stops other players cancelling other people's animations (kicking people out of cars etc.)
     StopOtherPlayersGivingEachOtherWeapons = true, -- Stops other players giving other people weapons (If you have an admin menu to give weapons this may be an issue. Giving weapons with esx inventories or etc will not cause any issues!)
-    ModMenuChecks = true, -- (READ IMPORTANT) Will check in your resources for any injected code being variables/functions that has been added to our detection lists! Don't forget to also enable it on the client script! In acloader.lua! Will add to every resource so please do not change the AntiCheat Name It must stay as the name it has.  
+    ModMenuChecks = false, -- (READ IMPORTANT) Will check in your resources for any injected code being variables/functions that has been added to our detection lists! Don't forget to also enable it on the client script! In acloader.lua! Will add to every resource so please do not change the AntiCheat Name It must stay as the name it has.  
     StopUnauthorizedResources = true, -- Will check for resources that have not been allowed by the server! (Common with Eulen tick box menu loading options)
 }
 

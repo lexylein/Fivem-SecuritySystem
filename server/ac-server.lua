@@ -1046,7 +1046,6 @@ CreateThread(function()
                     if data and type(data) == 'string' and string.find(data, 'acloader.lua') == nil then
                         data = data .. '\nclient_script "@' .. GetCurrentResourceName() .. '/acloader.lua"'
                         SaveResourceFile(resource_name, v, data, -1)
-                        print('Added to resource: ' .. resource_name)
                         added = true
                     end
                 end
@@ -1067,7 +1066,6 @@ CreateThread(function()
                     if data and type(data) == 'string' and string.find(data, 'acloader.lua') ~= nil then
                         local removed = string.gsub(data, 'client_script "%@badger%-anticheat%-master%/acloader.lua"', "")
                         SaveResourceFile(resource_name, v, removed, -1)
-                        print('Removed from resource: ' .. resource_name)
                         added = true
                     end
                 end
@@ -1087,6 +1085,7 @@ local function collectValidResourceList()
         validResourceList[GetResourceByFindIndex(i)] = true
     end
 end
+
 collectValidResourceList()
 if Config.Components.StopUnauthorizedResources then
     AddEventHandler("onResourceListRefresh", collectValidResourceList)
