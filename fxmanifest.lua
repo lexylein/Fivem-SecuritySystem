@@ -5,7 +5,7 @@ lua54 'yes'
 author 'Noro_Lex'
 discord 'https://discord.gg/3AG6v6rRm7'
 description 'made by Noro_Lex'
-version '1.3'
+version '1.4'
 
 shared_script 'config.lua'
 

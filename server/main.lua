@@ -60,19 +60,47 @@ ESX.RegisterServerCallback("securitysys:getGroup", function(source, cb)
     end
 end)
 
+AddEventHandler('baseevents:onPlayerDied', function (source)
+
+    print('Player: ' .. GetPlayerName(player) ..' die')
+
+end)
+
 AddEventHandler('playerDropped', function (reason)
 
-    if reason == 'Exiting' or reason == 'Disconnected' then
+    local player = source
+    local ped = GetPlayerPed(player)
+    local playerCoords = GetEntityCoords(ped)
 
-        --if IsEntityDead(source) then
+    local firstname = ""
+    local lastname = ""
 
-            --print(GetPlayerName(source) .. ' ' .. _U('combatloging'))
+    local name = ""
 
-        --end
+    local xPlayer = ESX.GetPlayerFromId(player)
+    local identifier = xPlayer.getIdentifier()
+    local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM `users` WHERE identifier = @identifier', {
+    ['@identifier'] = identifier
+    })
+
+    if result[1] and result[1].firstname and result[1].lastname then
+        firstname = result[1].firstname
+        lastname = result[1].lastname
+    end
+
+    name = firstname .. ' ' .. lastname .. ' (' .. GetPlayerName(player) .. ')'
+
+    if Config.LeaveMarker == true then
+
+        TriggerClientEvent('securitysys:leavemarker', -1, playerCoords, reason, name)
 
     end
 
-    print('Player: ' .. GetPlayerName(source) .. ' dropped (Reason: ' .. reason .. ')')
+    if reason == 'Combat_Logout' then
+
+        --ban
+
+    end
 
 end)
 
@@ -104,7 +132,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason)
     end
 
     if Config.SteamKick == true then
-        if Steam == nil then
+        if Steam == nil or Steam == "" or Steam == "nil" then
             setKickReason("\n \n" .. _U('NoSteam'))
             CancelEvent()
             return
@@ -229,107 +257,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason)
             IP = v
         end
     end
-
-    if Steam == nil then
-        MySQL.Async.fetchAll('SELECT * FROM securitysys WHERE `License` = @License',
-        {
-            ['@License'] = Lice
-
-        }, function(data) 
-            if data[1] == nil then
-                MySQL.Async.execute('INSERT INTO securitysys (License, Tokens, Discord, IP, Xbox, Live) VALUES (@License, @Tokens, @Discord, @IP, @Xbox, @Live)',
-                {
-                    ['@License'] = Lice,
-                    ['@Discord'] = Discord,
-                    ['@Xbox'] = Xbox,
-                    ['@IP'] = IP,
-                    ['@Live'] = Live,
-                    ['@Tokens'] = json.encode(DatabaseStuff[Lice]),
-                })
-                DatabaseStuff[Lice] = nil
-                SetTimeout(5000, function()
-                    ReloadBans()
-                end)
-            end 
-        end)
-    end
-
 end)
-
-
-
-
-
-
-
-function WarnAccount(ID, Reason)
-    local ID = ID
-
-    MySQL.Async.fetchAll('SELECT * FROM securitysys WHERE `ID` = @ID',
-    {
-        ['@ID'] = ID
-
-    }, function(result)
-
-        Warnsresult = result[1].Warns +1
-    
-    end)
-
-    MySQL.Async.execute('UPDATE `securitysys` SET `Warns` = @Warns WHERE `ID` = @ID',
-    {
-        ['@ID'] = ID,
-        ['@Warns'] = Warnsresult,
-    })
-    SetTimeout(5000, function()
-        ReloadBans()
-    end)
-end
-
-function UnWarnAccount(ID)
-    local ID = ID
-
-    MySQL.Async.fetchAll('SELECT * FROM securitysys WHERE `ID` = @ID',
-    {
-        ['@ID'] = ID
-
-    }, function(result)
-
-        Warnsresult = result[1].Warns -1
-    
-    end)
-
-    MySQL.Async.execute('UPDATE `securitysys` SET `Warns` = @Warns WHERE `ID` = @ID',
-    {
-        ['@ID'] = ID,
-        ['@Warns'] = Warnsresult,
-    })
-    SetTimeout(5000, function()
-        ReloadBans()
-    end)
-end
-
-function KickAccount(ID)
-    local ID = ID
-
-    MySQL.Async.fetchAll('SELECT * FROM securitysys WHERE `ID` = @ID',
-    {
-        ['@ID'] = ID
-
-    }, function(result)
-
-        Kickresult = result[1].Kicks +1
-    
-    end)
-
-    MySQL.Async.execute('UPDATE `securitysys` SET `Kicks` = @Kicks WHERE `ID` = @ID',
-    {
-        ['@ID'] = ID,
-        ['@Kicks'] = Kickresult,
-    })
-    SetTimeout(5000, function()
-        ReloadBans()
-    end)
-end
 
 RegisterServerEvent("securitysys:kick")
 AddEventHandler("securitysys:kick", function(target, reson)
