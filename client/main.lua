@@ -242,14 +242,18 @@ RegisterCommand('sys-kick', function(source, args, rawCommand)
 
 end)
 
---[[AddEventHandler("onClientResourceStop", function(resource)
+AddEventHandler("onClientResourceStop", function(resource)
     if GetCurrentResourceName() == resource then
-        ForceSocialClubUpdate() -----will close fivem process on resource stop
+        if Config.KickOnRestart == true then
+            ForceSocialClubUpdate() -----will close fivem process on resource stop
+        end
     end
 end)
 
 AddEventHandler("onResourceStop", function(resource)
     if GetCurrentResourceName() == resource then
-        ForceSocialClubUpdate()-----will close fivem process on resource stop
+        if Config.KickOnRestart == true then
+            ForceSocialClubUpdate()-----will close fivem process on resource stop
+        end
     end
-end)]]
+end)
