@@ -1,4 +1,8 @@
 # Fivem-SecuritySystem
+ **funktions:**
+ - ban system
+ - whitelist system
+ - warn system
 
  **Support:**
  - Discord Server: https://discord.gg/GqT6fUt6z9
