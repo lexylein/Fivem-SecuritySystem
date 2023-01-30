@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Locale = 'de'
+Config.Locale = 'en'
 
 Config.KickOnRestart = true --kick all players when securitysys restarting or stop
 Config.LeaveMarker = true --if this true then a marker spawns at the point where the player geleaved
