@@ -8,6 +8,7 @@
  - multi language system
  - bypass system ( work with groups )
  - Discord webhook system
+ - leave marker system
 
  **Support:**
  - Discord Server: https://discord.gg/GqT6fUt6z9
