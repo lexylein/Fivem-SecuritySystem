@@ -4,6 +4,7 @@
  - whitelist system
  - warn system
  - anti-cheat system
+ - version checker
 
  **Support:**
  - Discord Server: https://discord.gg/GqT6fUt6z9
