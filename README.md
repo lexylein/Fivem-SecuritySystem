@@ -5,6 +5,7 @@
  - warn system
  - anti-cheat system
  - version checker
+ - multi language system
 
  **Support:**
  - Discord Server: https://discord.gg/GqT6fUt6z9
