@@ -83,7 +83,7 @@ Config.Perms = {
 
 }
 
-Config.use_notify = false --this is the notify system from me
+Config.use_notify = false --this is the notify system from me, is this false you use the esx notify system
 Config.use_cutom_notify = false
 function cutom_notify(title, message) --if Config.use_cutom_notify == true then paste yout notify here
 
