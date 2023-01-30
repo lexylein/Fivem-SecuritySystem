@@ -6,6 +6,8 @@
  - anti-cheat system
  - version checker
  - multi language system
+ - bypass system ( work with groups )
+ - Discord webhook system
 
  **Support:**
  - Discord Server: https://discord.gg/GqT6fUt6z9
