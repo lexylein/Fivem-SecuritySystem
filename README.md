@@ -14,7 +14,9 @@
  - upload this folder in the resource folder
  - change the folder name from the script to "securitysys"
  - go in the server.cfg and type "ensure securitysys"
- - restart ot start the fivem server
+ - go in the config.lua file from the script and change the things you want to change
+ - restart or start the fivem server
+ - join on the server and have fun =)
 
  **Support:**
  - Discord Server: https://discord.gg/GqT6fUt6z9
