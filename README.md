@@ -12,7 +12,7 @@
  
  **install**
  - upload this folder in the resource folder
- - change the folder name from the script to "curitysys"
+ - change the folder name from the script to "securitysys"
  - go in the server.cfg and type "ensure securitysys"
 
  **Support:**
