@@ -14,6 +14,7 @@
  - upload this folder in the resource folder
  - change the folder name from the script to "securitysys"
  - go in the server.cfg and type "ensure securitysys"
+ - restart ot start the fivem server
 
  **Support:**
  - Discord Server: https://discord.gg/GqT6fUt6z9
